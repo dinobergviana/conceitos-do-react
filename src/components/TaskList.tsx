@@ -15,20 +15,17 @@ export function TaskList() {
   const [newTaskTitle, setNewTaskTitle] = useState('');
 
   function handleCreateNewTask() {
-    if(newTaskTitle === "") {
-      return alert('Por favor, digite uma descrição para a task.')
-    }
+    // Crie uma nova task com um id random, não permita criar caso o título seja vazio.
+    if (newTaskTitle === "") return
 
-    let task = {
+    const task = {
       id: generateId(),
       title: newTaskTitle,
       isComplete: false,
     }
 
     setTasks([...tasks, task]);
-
     setNewTaskTitle("");
-    // Crie uma nova task com um id random, não permita criar caso o título seja vazio.
   }
 
   function generateId() {
@@ -43,6 +40,12 @@ export function TaskList() {
 
   function handleRemoveTask(id: number) {
     // Remova uma task da listagem pelo ID
+    const taskIndex = tasks.findIndex(task => {
+      return task.id === id;    
+    })
+    
+    tasks.splice(taskIndex, 1);
+    setTasks([...tasks]);
   }
 
   return (
