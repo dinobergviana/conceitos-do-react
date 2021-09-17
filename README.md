@@ -1,4 +1,4 @@
-## ToDo App :white_check_mark:
+## To.do app :white_check_mark:
 
 This is the first challange I finish during my ReactJS studies by Rockeseat :rocket:
 
