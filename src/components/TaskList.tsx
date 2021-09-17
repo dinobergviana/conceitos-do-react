@@ -15,7 +15,26 @@ export function TaskList() {
   const [newTaskTitle, setNewTaskTitle] = useState('');
 
   function handleCreateNewTask() {
+    if(newTaskTitle === "") {
+      return alert('Por favor, digite uma descrição para a task.')
+    }
+
+    let task = {
+      id: generateId(),
+      title: newTaskTitle,
+      isComplete: false,
+    }
+
+    setTasks([...tasks, task]);
+
+    setNewTaskTitle("");
     // Crie uma nova task com um id random, não permita criar caso o título seja vazio.
+  }
+
+  function generateId() {
+    let max = 9999;
+    let min = 1;
+    return Math.floor(Math.random() * ((max - min) + min)); 
   }
 
   function handleToggleTaskCompletion(id: number) {
